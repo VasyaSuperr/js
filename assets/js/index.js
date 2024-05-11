@@ -67,3 +67,17 @@ let gender = "male";
 const countGoods = Number(prompt("Input quantity goods: ", "10"));
 const cost = 200;
 document.write("<h2>" + countGoods * cost + "</h2>");
+
+// =============================================================================
+console.log("\nЗавдання на введення/виведення");
+
+console.log("// #1");
+const someNumberFromTheUser = Number(prompt("Input some number: ", "50"));
+const squareOfNumber = someNumberFromTheUser ** 2;
+console.log("Squared number from user: " + squareOfNumber);
+
+console.log("// #2");
+const someNumberFromUser1 = +prompt("Input first number: ", "1");
+const someNumberFromUser2 = +prompt("Input second number: ", "10");
+const average = (someNumberFromUser1 + someNumberFromUser2) / 2;
+alert("Average value of numbers: " + average);

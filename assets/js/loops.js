@@ -70,14 +70,27 @@
 //   console.log(startPage);
 // }
 
-let startNumber = 5;
-let endNumber = 12;
-let mult = 1;
+// let startNumber = 5;
+// let endNumber = 12;
+// let mult = 1;
 
-for (startNumber; startNumber <= endNumber; startNumber++) {
-  if (startNumber % 2 == 0) {
-    mult *= startNumber;
-  }
+// for (startNumber; startNumber <= endNumber; startNumber++) {
+//   if (startNumber % 2 == 0) {
+//     mult *= startNumber;
+//   }
+// }
+
+// console.log("Mult: ", mult);
+
+// "yyyy-mm-dd"
+let startDate = new Date("2024-05-02").getDate();
+const endDate = 31;
+
+const monthNumber = new Date().getMonth();
+console.log("monthNumber :>> ", monthNumber);
+
+document.write("<table> <thead> <tr>");
+for (startDate; startDate <= endDate; startDate++) {
+  document.write(`<th>${startDate}</th>`);
 }
-
-console.log("Mult: ", mult);
+document.write("</tr> </thead> </table>");

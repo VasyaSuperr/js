@@ -46,19 +46,38 @@
 //   console.log("Current page: ", startPage--);
 // } while (startPage >= endPage);
 
-const RIGHT_PASSWORD = "vasya";
-const TRY_LIMIT = 3;
-let currentTry = 1;
-let isPasswordCorrect = false;
+// const RIGHT_PASSWORD = "vasya";
+// const TRY_LIMIT = 3;
+// let currentTry = 1;
+// let isPasswordCorrect = false;
 
-do {
-  isPasswordCorrect = prompt("Input password: ", "vasya") === RIGHT_PASSWORD;
-} while (++currentTry <= TRY_LIMIT && !isPasswordCorrect);
+// do {
+//   isPasswordCorrect = prompt("Input password: ", "vasya") === RIGHT_PASSWORD;
+// } while (++currentTry <= TRY_LIMIT && !isPasswordCorrect);
 
-// if (!isPasswordCorrect) {
-//   console.log("Password is wrong !");
-// } else {
-//   console.log("Password is correct !");
+// // if (!isPasswordCorrect) {
+// //   console.log("Password is wrong !");
+// // } else {
+// //   console.log("Password is correct !");
+// // }
+
+// console.log(`Password is ${isPasswordCorrect ? "correct" : "wrong"} ! `);
+
+// let startPage = 101;
+// let stopPage = 91;
+
+// for (startPage; startPage >= stopPage; startPage -= 2) {
+//   console.log(startPage);
 // }
 
-console.log(`Password is ${isPasswordCorrect ? "correct" : "wrong"} ! `);
+let startNumber = 5;
+let endNumber = 12;
+let mult = 1;
+
+for (startNumber; startNumber <= endNumber; startNumber++) {
+  if (startNumber % 2 == 0) {
+    mult *= startNumber;
+  }
+}
+
+console.log("Mult: ", mult);

@@ -52,8 +52,7 @@ let currentTry = 1;
 let isPasswordCorrect = false;
 
 do {
-  let inputPassword = prompt("Input password: ", "vasya");
-  isPasswordCorrect = inputPassword === RIGHT_PASSWORD;
+  isPasswordCorrect = prompt("Input password: ", "vasya") === RIGHT_PASSWORD;
 } while (++currentTry <= TRY_LIMIT && !isPasswordCorrect);
 
 // if (!isPasswordCorrect) {

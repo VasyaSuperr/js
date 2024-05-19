@@ -92,30 +92,101 @@
 //   return `${this.firstName} ${this.lastName}`;
 // }
 
-const user = {
-  firstName: "Test",
-  lastName: "Testovych",
-  passw: "qwerty",
-  age: 23,
-  getFullName() {
-    return `${this.firstName} ${this.lastName}`;
-  },
-  changePassw(newPassw) {
-    this.passw = newPassw;
-  },
-};
+// const user = {
+//   firstName: "Test",
+//   lastName: "Testovych",
+//   passw: "qwerty",
+//   age: 23,
+//   getFullName() {
+//     return `${this.firstName} ${this.lastName}`;
+//   },
+//   changePassw(newPassw) {
+//     this.passw = newPassw;
+//   },
+// };
 
-console.log(user.getFullName());
-user.changePassw(prompt("Inpun new password"));
-console.log("user :>> ", user);
+// console.log(user.getFullName());
+// user.changePassw(prompt("Inpun new password"));
+// console.log("user :>> ", user);
 
-document.write(`<h2>${user.getFullName()}</h2>`);
+// document.write(`<h2>${user.getFullName()}</h2>`);
 
-// // Маленька вставка
-// function f() {
-//   console.log("this", this);
-//   //this.alert = 10;
-//   this.alert("sdfasdasd");
+// const car = {
+//   brand: "Dodge",
+//   model: "Charger",
+//   year: 1970,
+//   color: "black",
+//   owner: {
+//     firstName: "Test",
+//     lastName: "Testovych",
+//   },
+//   changeColor(newColor) {
+//     this.color = newColor;
+//   },
+//   getAge() {
+//     return new Date().getFullYear() - this.year;
+//   },
+// };
+
+// car.changeColor(prompt("Inpun new color: ", "yellow"));
+// console.log("car year :>> ", car.getAge());
+// console.log("car :>> ", car);
+// console.dir(car);
+// console.dir(car.getAge);
+// console.dir(new Date());
+
+// Перебір об'єктів,
+// for (const key in car) {
+//   console.log("key :>> ", key, car[key]);
 // }
 
-// f();
+// car[key] - синтаксис обчислювальних властивостей
+
+// const propName = "color";
+// console.log("Color: ", car[propName]);
+
+// Ввести дані для кішки з імені властивості і значення для них
+// const cat1 = {};
+
+// for (let i = 0; i < 3; i++) {
+//   let key = prompt("Enter the key");
+//   let value = prompt("Enter the value");
+//   cat1[key] = value;
+// }
+
+// Функція конструктор
+function User(name, surname, userAge, userEmail, isMail) {
+  //   const this = {};
+  this.firstName = name;
+  this.lastName = surname;
+  this.age = userAge;
+  this.email = userEmail;
+  this.isMail = isMail;
+  //   this.changeEmail = function (newEmail) {
+  //     this.email = newEmail;
+  //   };
+  //   return this;
+}
+
+User.prototype.changeEmail = function (newEmail) {
+  this.email = newEmail;
+};
+
+const user1 = new User("Test", "Testovych", 23, "mail@mail.com", true);
+const user2 = new User("Wally", "Robort", 2, "wally@robot.mail", true);
+
+user1.changeEmail("newmail@com");
+
+console.log("user1 :>> ", user1);
+console.log("user2 :>> ", user2);
+
+// function Car(brand, model, year, color, owner) {
+//   this.brand = brand;
+//   this.model = model;
+//   this.year = year;
+//   this.color = color;
+//   this.owner = owner;
+// }
+// const car = new Car("Dodge", "Changer", 1970, "black", "Dominic");
+// car.model = "Challenger";
+// console.log(car);

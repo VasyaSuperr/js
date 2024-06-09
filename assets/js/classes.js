@@ -129,81 +129,133 @@
 // Принципи ООП:
 // інкапсуляція - приховання логіки (особливостей реалізації)
 // спадкування  - перевикористання структури та логіки (альт. назва - спеціалізація, is a)
-// поліморфізм  - можливість через однаковий інтерфейс працювати з різними типами (в js поліморфізм підтипів)
+// поліморфізм  - можливість через однаковий інтерфейс працювати з різними типами (в js поліморфізм підтипів: перевизначення, абстрактні класи)
 
-class User {
-  constructor(name, surname, age, isMale, email) {
-    this.firstName = name;
-    this.lastName = surname;
-    this.age = age;
-    this.isMale = isMale;
-    this.email = email;
-    this.isBanned = false;
+// class User {
+//   constructor(name, surname, age, isMale, email) {
+//     this.firstName = name;
+//     this.lastName = surname;
+//     this.age = age;
+//     this.isMale = isMale;
+//     this.email = email;
+//     this.isBanned = false;
+//   }
+
+//   getFullName() {
+//     return `${this.firstName} ${this.lastName}`;
+//   }
+// }
+
+// const user1 = new User("Test", "Testovych", 25, false, "test@test.com");
+
+// // дочірній / спадкоємець
+
+// class Moderator extends User {
+//   constructor(name, surname, age, isMale, email, permission) {
+//     super(name, surname, age, isMale, email); // виклик конструктора базового класу
+//     this.permission = permission;
+//   }
+
+//   sendMessage(user, message) {
+//     return `Moderator ${this.getFullName()} send message "${message}" to user ${user.getFullName()}`;
+//   }
+// }
+
+// const moderator1 = new Moderator(
+//   "Mod",
+//   "Modovych",
+//   25,
+//   false,
+//   "test@test.com",
+//   { canRead: true, canWrit: true }
+// );
+
+// document.write(moderator1.sendMessage(user1, "Your message is beautiful"));
+
+// class Admin extends Moderator {
+//   constructor(name, surname, age, isMale, email, permission, category) {
+//     super(name, surname, age, isMale, email, permission);
+//     this.category = category;
+//   }
+
+//   bann(user) {
+//     user.isBanned = true;
+//   }
+
+//   unban(user) {
+//     user.isBanned = false;
+//   }
+
+//   // перевизначення
+//   sendMessage(user, message) {
+//     return `Administrator  ${this.getFullName()} send message "${message}" to user ${user.getFullName()}`;
+//   }
+// }
+
+// const admin1 = new Admin(
+//   "Admin",
+//   "Adminovych",
+//   30,
+//   false,
+//   "admin@admin.com",
+//   { canRead: true, canWrit: true },
+//   1
+// );
+
+// admin1.bann(user1);
+// console.log(user1.isBanned);
+// admin1.unban(user1);
+// console.log(user1.isBanned);
+// document.write(admin1.sendMessage(user1, "Your message is beautiful"));
+
+// Абстрактний клас - клас без реалізації
+// Описує спільний інтерфейс для ієрархії - прояв поліморфізму
+
+class Figure {
+  constructor(name) {
+    this.name = name;
   }
 
-  getFullName() {
-    return `${this.firstName} ${this.lastName}`;
+  getArea() {
+    return null;
   }
 }
 
-const user1 = new User("Test", "Testovych", 25, false, "test@test.com");
-
-// дочірній / спадкоємець
-
-class Moderator extends User {
-  constructor(name, surname, age, isMale, email, permission) {
-    super(name, surname, age, isMale, email); // виклик конструктора базового класу
-    this.permission = permission;
+class Square extends Figure {
+  constructor(a) {
+    super("square");
+    this.a = a;
   }
 
-  sendMessage(user, message) {
-    return `Moderator ${this.getFullName()} send message "${message}" to user ${user.getFullName()}`;
+  getArea() {
+    return this.a * this.a;
   }
 }
 
-const moderator1 = new Moderator(
-  "Mod",
-  "Modovych",
-  25,
-  false,
-  "test@test.com",
-  { canRead: true, canWrit: true }
-);
+const square1 = new Square(4);
+console.log("square1.getArea() :>> ", square1.getArea());
+console.log("square1.name :>> ", square1.name);
 
-document.write(moderator1.sendMessage(user1, "Your message is beautiful"));
-
-class Admin extends Moderator {
-  constructor(name, surname, age, isMale, email, permission, category) {
-    super(name, surname, age, isMale, email, permission);
-    this.category = category;
+class Rectangle extends Figure {
+  constructor(a, b) {
+    super("rectangle");
+    this.a = a;
+    this.b = b;
   }
 
-  bann(user) {
-    user.isBanned = true;
-  }
-
-  unban(user) {
-    user.isBanned = false;
-  }
-
-  // перевизначення
-  sendMessage(user, message) {
-    return `Administrator  ${this.getFullName()} send message "${message}" to user ${user.getFullName()}`;
+  getArea() {
+    return this.a * this.b;
   }
 }
 
-const admin1 = new Admin(
-  "Admin",
-  "Adminovych",
-  30,
-  false,
-  "admin@admin.com",
-  { canRead: true, canWrit: true },
-  1
-);
+const rectangle1 = new Rectangle(4, 5);
+console.log("rectangle1.getArea() :>> ", rectangle1.getArea());
+console.log("rectangle1.name :>> ", rectangle1.name);
 
-admin1.bann(user1);
-console.log(user1.isBanned);
-admin1.unban(user1);
-console.log(user1.isBanned);
-document.write(admin1.sendMessage(user1, "Your message is beautiful"));
+function calcArea(figure) {
+  if (figure instanceof Figure) {
+    return figure.getArea();
+  }
+}
+
+console.log("calcArea(rectangle1) :>> ", calcArea(rectangle1));
